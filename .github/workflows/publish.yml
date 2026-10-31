@@ -1,0 +1,9 @@
+name: Publish
+on:
+  push:
+    branches: [feat]
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "upstream done on $GITHUB_REF"
