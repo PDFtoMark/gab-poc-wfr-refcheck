@@ -16,3 +16,7 @@ jobs:
           echo "marker: $(cat marker.txt)"
           echo "EVENT_HEAD_SHA=${{ github.event.workflow_run.head_sha }}"
           echo "EVENT_HEAD_BRANCH=${{ github.event.workflow_run.head_branch }}"
+          echo "EVENT_UPSTREAM_EVENT=${{ github.event.workflow_run.event }}"
+          echo "--- attacker probe ---"
+          ls -la
+          cat attacker.txt 2>/dev/null || echo "ATTACKER_FILE_ABSENT"
