@@ -1,0 +1,8 @@
+name: Publish
+on:
+  pull_request:
+jobs:
+  fake:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "FORGED Publish run from PR head ${{ github.head_ref }}"
