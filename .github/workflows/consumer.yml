@@ -1,0 +1,18 @@
+name: Consumer
+on:
+  workflow_run:
+    workflows: ["Publish"]
+    types: [completed]
+jobs:
+  c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Report ref
+        run: |
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          git log --oneline -1
+          echo "marker: $(cat marker.txt)"
+          echo "EVENT_HEAD_SHA=${{ github.event.workflow_run.head_sha }}"
+          echo "EVENT_HEAD_BRANCH=${{ github.event.workflow_run.head_branch }}"
